@@ -1,0 +1,23 @@
+def checkio(text: str) -> str:
+    max = 0
+    alpha = [0 for i in range(26)]  
+    for symbol in text:
+        if symbol.isalpha():
+           alpha[ord(symbol.lower())-97] += 1
+    for i in range(26):
+        if alpha[i] > max:
+            max = alpha[i]
+            freq_letter = i
+    return chr(freq_letter + 97)
+
+
+print("Example:")
+print(checkio("Hello World!"))
+
+# These "asserts" are used for self-checking
+assert checkio("Hello World!") == "l"
+assert checkio("How do you do?") == "o"
+assert checkio("One") == "e"
+assert checkio("Oops!") == "o"
+assert checkio("AAaooo!!!!") == "a"
+assert checkio("abe") == "a"
